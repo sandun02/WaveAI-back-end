@@ -1,19 +1,20 @@
 import "dotenv/config";
-import express from "express";
+//import express from "express";
 import jobsRouter from "./api/jobs";
 import { connectDB } from "./infrastructure/db";
 import jobApplicationRouter from "./api/jobApplication";
-import cors from "cors";
+//import cors from "cors";
 import GlobalErrorHandlingMiddleware from "./api/middleware/global-error-handler";
 
-
+const express = require('express');
+const cors = require('cors');
 const app = express();
 
 
 app.use(express.json());
 app.use(cors({
-    origin: "https://waveai.netlify.app",
-}))
+    origin: 'https://waveai.netlify.app',
+}));
  
 connectDB();
 
