@@ -10,18 +10,21 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-
 app.use(express.json());
-app.use(cors({
+
+const corsOptions = {
     origin: 'https://waveai.netlify.app',
-}));
+    optionsSuccessStatus: 200 
+  };
+
+app.use(cors(corsOptions));
  
 connectDB();
 
 app.use("/jobs", jobsRouter);
-app.use("/jobApplications", jobApplicationRouter)
+app.use("/jobApplications", jobApplicationRouter);
 
-app.use(GlobalErrorHandlingMiddleware)
+app.use(GlobalErrorHandlingMiddleware);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}.`));
