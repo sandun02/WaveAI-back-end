@@ -6,11 +6,15 @@ import jobApplicationRouter from "./api/jobApplication";
 import cors from "cors";
 import GlobalErrorHandlingMiddleware from "./api/middleware/global-error-handler";
 
+
 const app = express();
 
-app.use(express.json());
-app.use(cors())
 
+app.use(express.json());
+app.use(cors({
+    origin: "https://waveai.netlify.app",
+}))
+ 
 connectDB();
 
 app.use("/jobs", jobsRouter);
