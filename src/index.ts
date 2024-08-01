@@ -13,8 +13,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: 'https://waveai.netlify.app',
-    optionsSuccessStatus: 200 
+    origin: '*',
   };
 
 app.use(cors(corsOptions));
